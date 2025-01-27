@@ -1,0 +1,54 @@
+managed implementation in class zbp_zrap_i_cds_demo unique;
+strict ( 2 );
+with draft;
+
+define behavior for YZRAP_I_CDS_DEMO alias demo_booking
+persistent table YRAP_DEMO1
+draft table yzrap_demo1_d  // For Draft-2
+lock master
+total etag changed_at  // For Draft-3
+authorization master ( instance )
+etag master changed_at   // For eTag
+{
+  create;
+  update;
+  delete;
+
+    // Custom Action
+  action actionStatus;
+  action ( features : instance ) actionInactive;
+
+//   Draft actions-4
+  draft action Edit;
+  draft action Activate;
+  draft action Discard;
+  draft action Resume;
+  draft determine action Prepare { }
+
+  field ( numbering : managed, readonly ) bookid;  // System auto generates the number
+  //  field ( mandatory : create ) bookFee, custName;  // Fields marked as mandatory
+  field ( readonly ) created_by, created_at, changed_by, changed_at; // Fields marked as read only
+
+  // Validation
+  validation validate_data on save { create; }  // Perform validation during save
+
+  // Determination
+  determination determine_data on save { create; } // Perform determination during save
+
+  mapping for yrap_demo1  // Field mapping entity with DB
+  {
+    bookId = book_id;
+    bookDate = book_date;
+    bookFee = booking_fee;
+    amount = currency_code;
+    custName = cust_name;
+    source = city_from;
+    destination = city_to;
+    status = status;
+    inactive = inactive;
+    created_by = created_by;
+    changed_by = changed_by;
+    created_at = created_at;
+    changed_at = changed_at;
+  }
+}

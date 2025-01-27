@@ -1,0 +1,52 @@
+@Metadata.layer: #CORE
+@UI: { headerInfo: { typeName: 'Object - Booking',
+                     typeNamePlural: 'List - Booking' } }
+                     
+annotate entity yzrap_p_cds_demo
+    with 
+{
+@UI.facet: [ { position: 10, label: 'Booking',
+                 type: #IDENTIFICATION_REFERENCE,
+                 id: 'idBooking'} ]
+
+  @UI.lineItem: [ { position: 10, label: 'Booking ID'  } ]
+  @UI.identification: [ { position: 10, label: 'Booking Id' } ]
+  @UI.selectionField: [{ position: 10 }]
+  bookId;
+
+  @UI.lineItem: [ { position: 20, label: 'Booking Date'  } ]
+  @UI.identification: [ { position: 20 , label: 'Booking Date'  } ]
+  bookDate;
+
+  @UI.identification: [ { position: 30, label: 'Customer Name'  } ]
+  custName;
+
+  @UI.lineItem: [ { position: 30, label: 'Amount' } ]
+  @UI.identification: [ { position: 40, label: 'Amount' } ]
+  bookFee;
+
+  @UI.lineItem: [ { position: 50, label: 'Status' },
+                  { type: #FOR_ACTION, dataAction: 'actionStatus', label: 'Mark as Completed', position: 10 } ]
+  status;
+
+//  @UI.lineItem: [{ position: 55, label: 'Inactive' },
+//                 { type: #FOR_ACTION, dataAction: 'actionInactive', label: 'Mark Inactive', position: 20 }]
+//  inactive;
+//
+  @UI.identification: [ { position: 60, label: 'From' },
+                        { type: #FOR_ACTION, dataAction: 'actionStatus', label: 'Mark as Completed' }]
+  source;
+
+  @UI.identification: [ { position: 70, label: 'To' } ]
+  destination;
+
+  @UI.identification: [ { position: 80, label: 'Created By' } ]
+  created_by;
+  @UI.identification: [ { position: 90, label: 'Changed By' } ]
+  changed_by;
+  @UI.identification: [ { position: 100, label: 'Created At' } ]
+  created_at;
+  @UI.identification: [ { position: 110, label: 'Changed At' } ]
+  changed_at;
+    
+}

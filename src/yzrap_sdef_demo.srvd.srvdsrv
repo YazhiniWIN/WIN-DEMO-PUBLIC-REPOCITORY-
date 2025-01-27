@@ -1,0 +1,4 @@
+@EndUserText.label: 'Service Definition Demo'
+define service Yzrap_sdef_demo {
+  expose yzrap_p_cds_demo as Booking;
+}

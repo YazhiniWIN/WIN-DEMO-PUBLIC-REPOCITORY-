@@ -1,0 +1,5 @@
+CLASS zbp_zrap_i_cds_demo DEFINITION PUBLIC ABSTRACT FINAL FOR BEHAVIOR OF yzrap_i_cds_demo.
+ENDCLASS.
+
+CLASS zbp_zrap_i_cds_demo IMPLEMENTATION.
+ENDCLASS.
